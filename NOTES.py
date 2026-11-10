@@ -6,18 +6,17 @@ def sv(N,a):
  for n in N:
   s+="\n\n"+n[0]
   for l in n[1]:s+="\n"+l
+ e=[ord(c) for c in s]
+ for p in range(5):ts.store_list(K[p],e[p*999:p*999+999] or [0])
+def ok(v):
+ try:return v==int(v) and (v>31 or v==10) and v<1114112
+ except:return 0
+def ld(f=0):
  e=[]
- for c in s:e.append(ord(c))
- for p in range(5):
-  c=e[p*999:p*999+999]
-  if c:ts.store_list(K[p],c)
-  else:ts.store_list(K[p],[0])
-def ld():
- e=[]
- for p in range(5):
+ for k in K:
   try:
-   c=ts.recall_list(K[p])
-   if c and c!=[0]:e.extend(c)
+   c=ts.recall_list(k)
+   if c!=[0]:e+=c
   except:pass
  if not e:return [],0
  s=""
